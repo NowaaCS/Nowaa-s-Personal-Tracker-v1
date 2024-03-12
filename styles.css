@@ -70,10 +70,6 @@ dialog {
     animation: slide-from-right 0.7s ease-in-out forwards, rotate-in 0.7s linear;
 }
 
-div {
-    /* background-color: var(--div-color); */
-}
-
 .draggable {
     cursor: grab;
 }
@@ -93,6 +89,10 @@ div {
     &:active {
         cursor: grabbing;
     }
+;
+    width: 18px;
+    height: 18px;
+    text-align: center;
 }
 
 .menu {
@@ -102,20 +102,21 @@ div {
     height: max-content;
     background-color: transparent;
     border-radius: 15px;
-    transition: 0.3s;
+    transition: 0.3s ease-out;
 
         &:hover {
-            rotate: 3.5deg;
-        ul {
+            rotate: initial;
+            ul {
                 transition: 0.3s;
-                /* rotate: -0.25deg; */
+            /* rotate: -0.25deg; */
             }
         ;
-    /* transition: 3s; */
+            /* transition: 3s; */
         }
 
     .menu-contents {
-    width: 400px;
+    /* width: 400px; */
+    
     height: 550px;
     z-index: 2;
     background-color: transparent;
@@ -178,6 +179,8 @@ div {
     .menu-list {
     height: 100%;
     padding: 1rem;
+    min-width: 350px;
+    min-height: 200px;
 
     .material-symbols-outlined {
     font-size: 12px;
@@ -201,41 +204,42 @@ div {
     height: fit-content;
     padding: 4px;
     padding-left: 8px;
+    padding-right: 0.8rem;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
-    transition: 0.3s;
+    transition: 0.45s;
     resize: vertical;
 
         &:hover {
             background-color: rgb(102 168 220);
-            padding: 8px;
-            cursor: pointer;
-            border-radius: 15px;
+    padding: 8px;
+    padding-right: 1rem;
+    cursor: pointer;
+    border-radius: 15px;
         }
 
         .more-info {
-            content: "[ ] subtask";
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 0px;
-            max-width: 100%;
-            overflow: hidden;
-            overflow-y: scroll;
-            margin: auto;
-            padding: 0;
-            transition: 0.3s;
-            resize: vertical;
-            overflow: auto;
-            /* transition: 0.3s; */
-            background-color: aliceblue;
-    
-            li {
+    content: "[ ] subtask";
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 0px;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: auto;
+    padding: 0;
+    transition: inherit;
+    resize: vertical;
+    overflow: auto;
+    /* transition: 0.3s; */
+    background-color: aliceblue;
+    li {
                 list-style-type: disc;
-                /* list-style: disc; */
-                border-bottom-style: dotted;
-                padding: 4px;
+    /* list-style: disc; */
+    border-bottom-style: dotted;
+    padding: 4px;
 
                 &:first-of-type {
                     border-top-style: dotted;
@@ -243,7 +247,7 @@ div {
 
             }
     }
-        }
+    }
     background-color: #7ea97e;
     border-radius: 15px;
     z-index: 2;
@@ -256,6 +260,7 @@ div {
     .menuPopup {
     position: relative;
     width: 0;
+    overflow: hidden;
     height: fit-content;
     margin-left: -15px;
     padding: 2rem;
@@ -270,20 +275,21 @@ div {
     transition: 0.5s;
     /* animation: menuPopup 0.5s reverse forwards; */
     button {
-        overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    border-style: none;
-    height: 2rem;
-    margin-left: -1rem;
-    margin-bottom: 2px;
-    opacity: 0.8;
-    transition: 300ms;
+        overflow: auto;
+        /* text-overflow: ellipsis; */
+        width: 100%;
+        border-style: none;
+        height: 2rem;
+        margin-left: -1rem;
+        margin-bottom: 2px;
+        opacity: 0.8;
+        /* transition: 100ms; */
+        /* transition-delay: calc(var(--order) * 1s); */
             
             &:hover {
                 margin-left: 0;
-    opacity: 1;
-    z-index: 2;
+        opacity: 1;
+        z-index: 2;
             }
         }
 
@@ -291,16 +297,9 @@ div {
     /* top: 15px; */
     /* bottom: 0px; */
     }
-    ;
-    rotate: -3.5deg;
+    
+    rotate: 4deg;
 }
-
-.menu:hover {
-    .menuPopup {
-        /* background-color: #387ADF; */
-    }
-}
-
 
 .sideMenu {
     position: fixed;

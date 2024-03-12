@@ -76,9 +76,11 @@ Viewing mode</p>
             <div class="menu-contents">
 
                 <div class="menu-navbar" id="menu-navbar">
-                    <button class="menu-button" id="menu-button">Tracker</button>
-                    <button class="menu-button" id="menu-button">CST5L Project</button>
-                    <button class="menu-button" id="menu-button">Chores</button>
+                    <button class="menu-button" id="menu-button">This</button>
+                    <button class="menu-button" id="menu-button">Ur</button>
+                    <button class="menu-button" id="menu-button">Goal</button>
+                    <button class="menu-button" id="menu-button">List</button>
+                    <button class="menu-button" id="menu-button">Buddy</button>
                     <button class="menu-button" onclick="addTask.showModal()" id="menu-button" style="width: 50%; margin-right: 8px">+</button>
                 </div>
 
@@ -87,13 +89,13 @@ Viewing mode</p>
                     <span style="
                     display: flex;
                     justify-content: space-between;">
-                    <h4>We could have the goal name here</h4>
+                    <h4>List of things to showcase:</h4>
                     <h6 class="material-symbols-outlined" id="pan">pan_tool</h6>
                     </span>
                     <ul>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            You'd have to face the backend eventually <br>[Progress bar] 1% finished
+                            Clicking on the list items show their subtasks <br>[Progress bar] 1% finished
                             <ul class="more-info">
                                 <li>Child 1</li>
                                 <li>Child 2</li>
@@ -102,7 +104,7 @@ Viewing mode</p>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            Imply if there's hidden elements somehow <br>[Progress bar] 2% finished
+                            Resizable window <br>[Progress bar] 2% finished
                             <ul class="more-info">
                                 <li>Child 1</li>
                                 <li>Child 2</li>
@@ -111,7 +113,7 @@ Viewing mode</p>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            Never forget the animation overshoots baby <br>[Progress bar] 3% finished
+                            EDIT MODE <br>[Progress bar] 3% finished
                             <ul class="more-info">
                                 <li>Child 1</li>
                                 <li>Child 2</li>
@@ -120,45 +122,55 @@ Viewing mode</p>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            Everything is draggable, maybe we could use the springing effect <br>[Progress bar] 4% finished
+                            <span style="text-decoration: line-through;" >I hope school doesn't drag me back to anywhere else but web dev</span> <br>[DONE]
                             <ul class="more-info">
-                                <li>Watch this video to learn how to do so: https://www.youtube.com/watch?v=jfYWwQrtzzY</li>
+                                <li>Just kidding, I need to figure out how the hanging animation works</li>
+                                <li>I also need to work on dragging around the list items</li>
+                                <li>Child 3</li>
+                            </ul>
+                        </li>
+                        <li class="menu-list-item">
+                            <h6 class="material-symbols-outlined">circle</h6>
+                            Part of me says the slightly crooked menu list is disorienting.<br>
+                            But I find the slightly rotated list cute🥺🥺🥺
+                            <ul class="more-info">
+                                <li>WOBBLY</li>
+                                <li>WOBBLY</li>
+                                <li>WOBBLY</li>
+                            </ul>
+                        </li>
+                        <li class="menu-list-item">
+                            <h6 class="material-symbols-outlined">circle</h6>
+                            OOOOOOOH BUT WHAT IF THE USERS EXPERIENCE SOMETHING WRONG<BR> WITH THEM BUT THEY HAVE NO IDEA WHY. THAT WOULD BE FUNNY<br>[Progress bar] 6% finished
+                            <ul class="more-info">
+                                <li>WOBBLY</li>
                                 <li>Child 2</li>
                                 <li>Child 3</li>
                             </ul>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            Play around with the dragging in another project <br>[Progress bar] 5% finished
+                            Hide the popup menu when dragging<br>[Progress bar] 6% finished
                             <ul class="more-info">
-                                <li>Child 1</li>
+                                <li>WOBBLY</li>
                                 <li>Child 2</li>
                                 <li>Child 3</li>
                             </ul>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            Changing colors for different goals <br>[Progress bar] 6% finished
+                            Bugs & Usability issues: <br>[Progress bar] 7% finished
                             <ul class="more-info">
-                                <li>Child 1</li>
+                                <li>There's a bug with the null for onmousemove</li>
                                 <li>Child 2</li>
                                 <li>Child 3</li>
                             </ul>
                         </li>
                         <li class="menu-list-item">
                             <h6 class="material-symbols-outlined">circle</h6>
-                            The list could be an array or object. With modifiable properties like color and names <br>[Progress bar] 7% finished
+                            List of things to NOT showcase: <br>[Progress bar] 1% finished
                             <ul class="more-info">
-                                <li>Child 1</li>
-                                <li>Child 2</li>
-                                <li>Child 3</li>
-                            </ul>
-                        </li>
-                        <li class="menu-list-item">
-                            <h6 class="material-symbols-outlined">circle</h6>
-                            Content-editable for when edit is clicked. <br>[Progress bar] 1% finished
-                            <ul class="more-info">
-                                <li>Change the cursor events too!</li>
+                                <li>R</li>
                                 <li>Maybe have an effect implying that it's editing mode</li>
                                 <li>Child 3</li>
                             </ul>
@@ -167,10 +179,10 @@ Viewing mode</p>
                 </div>
             </div>
             <div id="menuPopup" class="menuPopup">
-                <button>Settings</button>
-                <button id="edit-button" onclick="editListItems()">Edit</button>
-                <button>Arrange</button>
-                <button>Caspian</button>
+                <button style="--order: 1">Settings</button>
+                <button style="--order: 2" id="edit-button" onclick="editListItems()">Edit</button>
+                <button style="--order: 3">Arrange</button>
+                <button style="--order: 4">Caspian</button>
             </div>
         </div>
     </div>

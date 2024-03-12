@@ -64,18 +64,36 @@ var menuNavbar = document.getElementById("menu-navbar");
 var pan = document.getElementById("pan");
 pan.addEventListener("mousedown", e => {
     var movingElement = menu;
+    var x = e.pageX;
+    var y = e.pageY;
+
+    movingElement.style.left = (x - menuList.offsetWidth + 24) + 'px';
+    movingElement.style.top = (y - menuNavbar.offsetHeight - 24) + 'px';
+
     document.onmousemove = e => {
         var x = e.pageX;
         var y = e.pageY;
-    
-        movingElement.style.left = (x - menuList.offsetWidth + 8) + 'px';
-        movingElement.style.top = (y - menuNavbar.offsetHeight - 24) + 'px';
+
+        // menuPopup.style.hide = "0px";
+        movingElement.style.left = (x - menuList.offsetWidth + 32) + 'px';
+        movingElement.style.top = (y - menuNavbar.offsetHeight + 8) + 'px';
+        movingElement.style.rotate = "-5deg";
+
     };
 
     document.addEventListener("mouseup", e => {
+        movingElement.style.rotate = "2deg";
         movingElement = null;
     });
         
+});
+
+menu.addEventListener("pointerenter", e => {
+    menu.style.rotate = "0deg";
+});
+
+menu.addEventListener("pointerleave", e => {
+    menu.style.rotate = "2deg";
 });
     
 
