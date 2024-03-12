@@ -30,6 +30,11 @@
     font-family: inherit;
 }
 
+.background {
+    background-color: #800080b3;
+    transition: 0.5s;
+}
+
 button {
     cursor: pointer;
 }
@@ -40,8 +45,15 @@ body {
     background-color: var(--background-color);
 }
 
-div {
+.container {
+    display: flex;
     /* background-color: var(--div-color); */
+    width: 100%;
+
+    .fill {
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 dialog {
@@ -58,14 +70,28 @@ dialog {
     animation: slide-from-right 0.7s ease-in-out forwards, rotate-in 0.7s linear;
 }
 
-.container {
-    display: flex;
+div {
     /* background-color: var(--div-color); */
-    width: 100%;
+}
 
-    .fill {
-        align-items: center;
-        justify-content: center;
+.draggable {
+    cursor: grab;
+}
+
+.dragging {
+    opacity: 0.5;
+    background-color: red;
+}
+
+.focus {
+    animation: focus 1s forwards;
+    transform-origin: bottom right;
+}
+
+#pan {
+    user-select: none;
+    &:active {
+        cursor: grabbing;
     }
 }
 
@@ -181,34 +207,35 @@ dialog {
     transition: 0.3s;
     resize: vertical;
 
-            &:hover {
-                background-color: rgb(102 168 220);
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 15px;
-            }
+        &:hover {
+            background-color: rgb(102 168 220);
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
 
-            .more-info {
-    content: "[ ] subtask";
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 0px;
-    max-width: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
-    margin: auto;
-    padding: 0;
-    transition: 0.3s;
-    resize: vertical;
-    overflow: auto;
-    /* transition: 0.3s; */
-    background-color: aliceblue;
-    li {
+        .more-info {
+            content: "[ ] subtask";
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 0px;
+            max-width: 100%;
+            overflow: hidden;
+            overflow-y: scroll;
+            margin: auto;
+            padding: 0;
+            transition: 0.3s;
+            resize: vertical;
+            overflow: auto;
+            /* transition: 0.3s; */
+            background-color: aliceblue;
+    
+            li {
                 list-style-type: disc;
-    /* list-style: disc; */
-    border-bottom-style: dotted;
-    padding: 4px;
+                /* list-style: disc; */
+                border-bottom-style: dotted;
+                padding: 4px;
 
                 &:first-of-type {
                     border-top-style: dotted;
@@ -218,10 +245,11 @@ dialog {
     }
         }
     background-color: #7ea97e;
-    border-radius: 8px 8px 15px 15px;
+    border-radius: 15px;
     z-index: 2;
     resize: auto;
     overflow: auto;
+    outline-style: auto;
     /* rotate: -1deg; */
     }
 
@@ -322,10 +350,6 @@ dialog {
         pointer-events: none;
     }
 
-}
-
-.draggable {
-    cursor: grab;
 }
 
 /* Styles  */
@@ -472,5 +496,17 @@ dialog {
     }
     to {
         rotate: 0deg;
+    }
+}
+
+@keyframes focus {
+    from {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    to {
+        scale: 1;
     }
 }

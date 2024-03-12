@@ -21,6 +21,16 @@
     <button onclick="addTask.close()">X</button>
 </dialog>
 
+<p class="state-changer" id="edit" style="
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 8px;
+    color: white;
+    text-transform: uppercase;
+    font-size: x-large;
+">
+Viewing mode</p>
 
 <div class="container fullscreen">
         <button class="material-symbols-outlined" 
@@ -56,9 +66,9 @@
 
         </ul>
     </div>
-    <div class="container fill" style="
+    <div class="background container fill" id="background" style="
         flex: 8;
-        background-color: #800080b3;
+        /* background-color: #800080b3; */
         flex-direction: column;
         ">
         
@@ -78,7 +88,7 @@
                     display: flex;
                     justify-content: space-between;">
                     <h4>We could have the goal name here</h4>
-                    <h6 class="material-symbols-outlined draggable">pan_tool</h6>
+                    <h6 class="material-symbols-outlined" id="pan">pan_tool</h6>
                     </span>
                     <ul>
                         <li class="menu-list-item">
@@ -144,12 +154,21 @@
                                 <li>Child 3</li>
                             </ul>
                         </li>
+                        <li class="menu-list-item">
+                            <h6 class="material-symbols-outlined">circle</h6>
+                            Content-editable for when edit is clicked. <br>[Progress bar] 1% finished
+                            <ul class="more-info">
+                                <li>Change the cursor events too!</li>
+                                <li>Maybe have an effect implying that it's editing mode</li>
+                                <li>Child 3</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div id="menuPopup" class="menuPopup">
                 <button>Settings</button>
-                <button>Edit</button>
+                <button id="edit-button" onclick="editListItems()">Edit</button>
                 <button>Arrange</button>
                 <button>Caspian</button>
             </div>
