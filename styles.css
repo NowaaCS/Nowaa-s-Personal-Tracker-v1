@@ -1,0 +1,476 @@
+/* CONTENTS  
+
+    - Site-wide settings
+    - Container settings 
+        ~ Pseudos are with the containers
+            - body
+            - div
+            - span
+    - Styles
+    - Fonts
+    - Icons
+    - Effects
+    - Animation settings 
+        ~ By default these are named after the element that use it
+
+*/
+/* Site-wide settings  */
+:root {
+    --background-color: hsl(0, 0%, 72%);
+    --div-color: hsl(0, 0%, 100%);
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Container settings  */
+body {
+    background-image: url(images/temp-bg-image.png);
+    background-color: var(--background-color);
+}
+
+div {
+    /* background-color: var(--div-color); */
+}
+
+dialog {
+    /* display: flex; */
+    align-self: center;
+    justify-self: center;
+    background-color: cadetblue;
+    width: 500px;
+    height: 350px;
+    align-items: center;
+    transition: 0.3s;
+    justify-content: center;
+    rotate: 360deg;
+    animation: slide-from-right 0.7s ease-in-out forwards, rotate-in 0.7s linear;
+}
+
+.container {
+    display: flex;
+    /* background-color: var(--div-color); */
+    width: 100%;
+
+    .fill {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.menu {
+    display: flex;
+    position: absolute;
+    width: fit-content;
+    height: max-content;
+    background-color: transparent;
+    border-radius: 15px;
+    transition: 0.3s;
+
+        &:hover {
+            rotate: 3.5deg;
+        ul {
+                transition: 0.3s;
+                /* rotate: -0.25deg; */
+            }
+        ;
+    /* transition: 3s; */
+        }
+
+    .menu-contents {
+    width: 400px;
+    height: 550px;
+    z-index: 2;
+    background-color: transparent;
+    border-radius: 15px;
+    transition: 0.3s;
+    }
+
+    .menu-navbar {
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    background-color: transparent;
+    justify-content: space-around;
+    align-items: flex-end;
+
+        .menu-button {
+    opacity: 0.5;
+    position: relative;
+    height: 1.5rem;
+    /* flex: 1; */
+    width: 100%;
+    background-color: antiquewhite;
+    border-top-right-radius: 8px;
+    transition: 0.3s;
+    border-style: none;
+    border-top-left-radius: 8px;
+    /* bottom: -0.3rem; */
+    transform-origin: top;
+    overflow: hidden;
+    
+            
+
+            &:first-of-type {
+                margin-left: 8px;
+            }
+    text-overflow: ellipsis;
+        }
+
+    }
+
+    
+
+    .menu-button:hover {
+        opacity: 0.75;
+    }
+
+    .menu-button.active {
+    opacity: 1;
+    background-color: #7ea97e;
+    border-top-right-radius: 8px;
+    height: 1.8rem;
+    border-top-left-radius: 8px;
+    bottom: 0px;
+    }
+
+    .menu-button:focus {
+        border-style: none;
+    }
+
+    .menu-list {
+    height: 100%;
+    padding: 1rem;
+
+    .material-symbols-outlined {
+    font-size: 12px;
+    align-items: center;
+    }
+    ul {
+            height: 94%;
+    background-color: antiquewhite;
+    border-radius: 15px;
+    padding: 0.5rem;
+    margin-top: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+        }
+
+        .menu-list-item {
+    list-style-type: none;
+    margin-bottom: 10px;
+    border-bottom-style: dotted;
+    border-right-style: dashed;
+    height: fit-content;
+    padding: 4px;
+    padding-left: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: 0.3s;
+    resize: vertical;
+
+            &:hover {
+                background-color: rgb(102 168 220);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 15px;
+            }
+
+            .more-info {
+    content: "[ ] subtask";
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 0px;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: auto;
+    padding: 0;
+    transition: 0.3s;
+    resize: vertical;
+    overflow: auto;
+    /* transition: 0.3s; */
+    background-color: aliceblue;
+    li {
+                list-style-type: disc;
+    /* list-style: disc; */
+    border-bottom-style: dotted;
+    padding: 4px;
+
+                &:first-of-type {
+                    border-top-style: dotted;
+                }
+
+            }
+    }
+        }
+    background-color: #7ea97e;
+    border-radius: 8px 8px 15px 15px;
+    z-index: 2;
+    resize: auto;
+    overflow: auto;
+    /* rotate: -1deg; */
+    }
+
+    .menuPopup {
+    position: relative;
+    width: 0;
+    height: fit-content;
+    margin-left: -15px;
+    padding: 2rem;
+    padding-left: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+    z-index: 1;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    transition: 0.5s;
+    /* animation: menuPopup 0.5s reverse forwards; */
+    button {
+        overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    border-style: none;
+    height: 2rem;
+    margin-left: -1rem;
+    margin-bottom: 2px;
+    opacity: 0.8;
+    transition: 300ms;
+            
+            &:hover {
+                margin-left: 0;
+    opacity: 1;
+    z-index: 2;
+            }
+        }
+
+        ;
+    /* top: 15px; */
+    /* bottom: 0px; */
+    }
+    ;
+    rotate: -3.5deg;
+}
+
+.menu:hover {
+    .menuPopup {
+        /* background-color: #387ADF; */
+    }
+}
+
+
+.sideMenu {
+    position: fixed;
+    width: 0;
+    /* outline-color: blue; */
+    /* outline-width: initial; */
+    /* outline-offset: -5px; */
+    height: 100vh;
+    max-width: 200px;
+    transition: 0.3s;
+    background-color: #efe3e3;
+    ul {
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 100%;
+    align-content: space-between;
+    /* outline-color: black; */
+    /* border-color: blue; */
+    /* justify-content: space-between; */
+    }
+    li {
+        clip-path: content-box;
+        width: inherit;
+        padding: 0.25rem 1rem;
+        color: #617cce;
+        border-bottom: #617cce;
+        transition: 0.3s;
+        opacity: 0.8;
+
+        &:first-of-type {
+            margin-top: 3rem;
+        }
+
+        &:hover {
+            color: #d92e2e;
+            margin-left: 0.5rem;
+            opacity: 1;
+        }
+
+    cursor: pointer;
+    /* border-bottom-style: solid; */
+    }
+
+    h6 {
+        pointer-events: none;
+    }
+
+}
+
+.draggable {
+    cursor: grab;
+}
+
+/* Styles  */
+.fullscreen {
+    width: 100vw;
+    height: 100vh;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fonts */
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* Icons */
+.material-symbols-outlined {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s;
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 18
+}
+
+.material-symbols-outlined:hover {
+    opacity: 1;
+}
+
+/* Effects */
+
+
+
+/* Animation settings  */
+
+@keyframes menuPopup {
+    from {
+        width: 0px;
+        transform: translate(-100%, 0%);
+    }
+
+    to {
+        width: 160px;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes after {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: calc(3rem + 16px);
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(150vw)
+    }
+    to {
+        transform: translateX(0%)
+
+    }
+}
+
+@keyframes rotate-in {
+    from {
+        rotate: 60deg;
+    }
+    to {
+        rotate: 0deg;
+    }
+}
