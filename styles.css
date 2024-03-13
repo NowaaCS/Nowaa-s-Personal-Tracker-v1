@@ -86,10 +86,12 @@ dialog {
 
 #pan {
     user-select: none;
+
     &:active {
         cursor: grabbing;
     }
-;
+
+    ;
     width: 18px;
     height: 18px;
     text-align: center;
@@ -99,77 +101,82 @@ dialog {
     display: flex;
     position: absolute;
     width: fit-content;
-    height: max-content;
+    /* height: max-content; */
     background-color: transparent;
     border-radius: 15px;
     transition: 0.3s ease-out;
 
-        &:hover {
-            rotate: initial;
-            ul {
-                transition: 0.3s;
+    &:hover {
+        rotate: initial;
+
+        ul {
+            transition: 0.3s;
             /* rotate: -0.25deg; */
-            }
-        ;
-            /* transition: 3s; */
         }
 
+        ;
+        /* transition: 3s; */
+    }
+
     .menu-contents {
-    /* width: 400px; */
-    
-    height: 550px;
-    z-index: 2;
-    background-color: transparent;
-    border-radius: 15px;
-    transition: 0.3s;
+        /* width: 400px; */
+        /* height: 550px; */
+        height: fit-content;
+        z-index: 2;
+        background-color: transparent;
+        border-radius: 15px;
+        transition: 0.3s;
     }
 
     .menu-navbar {
-    display: flex;
-    flex-direction: row;
-    height: max-content;
-    background-color: transparent;
-    justify-content: space-around;
-    align-items: flex-end;
+        display: flex;
+        position: initial;
+        flex-direction: row;
+        height: max-content;
+        background-color: transparent;
+        justify-content: space-around;
+        align-items: flex-end;
 
         .menu-button {
-    opacity: 0.5;
-    position: relative;
-    height: 1.5rem;
-    /* flex: 1; */
-    width: 100%;
-    background-color: antiquewhite;
-    border-top-right-radius: 8px;
-    transition: 0.3s;
-    border-style: none;
-    border-top-left-radius: 8px;
-    /* bottom: -0.3rem; */
-    transform-origin: top;
-    overflow: hidden;
-    
-            
+        opacity: 0.5;
+        position: relative;
+        height: 1.5rem;
+        /* flex: 1; */
+        width: 100%;
+        background-color: antiquewhite;
+        border-top-right-radius: 8px;
+        transition: 0.3s;
+        border-style: none;
+        border-top-left-radius: 8px;
+        /* bottom: -0.3rem; */
+        transform-origin: top;
+        overflow: hidden;
+
+
 
             &:first-of-type {
                 margin-left: 8px;
             }
-    text-overflow: ellipsis;
+        text-overflow: ellipsis;
         }
 
+    ;
+        z-index: 1;
     }
 
-    
+
 
     .menu-button:hover {
         opacity: 0.75;
     }
 
     .menu-button.active {
-    opacity: 1;
-    background-color: #7ea97e;
-    border-top-right-radius: 8px;
-    height: 1.8rem;
-    border-top-left-radius: 8px;
-    bottom: 0px;
+        opacity: 1;
+        background-color: #7ea97e;
+        border-top-right-radius: 8px;
+        height: 1.8rem;
+        border-top-left-radius: 8px;
+        bottom: 0px;
     }
 
     .menu-button:focus {
@@ -177,115 +184,118 @@ dialog {
     }
 
     .menu-list {
-    height: 100%;
-    padding: 1rem;
-    min-width: 350px;
-    min-height: 200px;
+        /* height: 100%; */
+        padding: 1rem;
+        min-width: 350px;
+        min-height: 200px;
+        gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
 
-    .material-symbols-outlined {
-    font-size: 12px;
-    align-items: center;
-    }
-    ul {
+        .material-symbols-outlined {
+        font-size: 12px;
+        align-items: center;
+        }
+        ul {
+            background-color: antiquewhite;
+            border-radius: 15px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
             height: 94%;
-    background-color: antiquewhite;
-    border-radius: 15px;
-    padding: 0.5rem;
-    margin-top: 10px;
-    overflow: hidden;
-    overflow-y: scroll;
+            /* overflow: scroll; */
+            overflow-x: scroll;
         }
 
         .menu-list-item {
-    list-style-type: none;
-    /* margin-bottom: 10px; */
-    border-bottom-style: dotted;
-    border-right-style: dashed;
-    height: fit-content;
-    padding: 4px;
-    padding-left: 8px;
-    padding-right: 0.8rem;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
-    transition: 0.45s;
-    resize: vertical;
+        list-style-type: none;
+        /* margin-bottom: 10px; */
+        border-bottom-style: dotted;
+        border-right-style: dashed;
+        height: fit-content;
+        padding: 4px;
+        padding-left: 8px;
+        padding-right: 16px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+        transition: 0.45s;
+        /* overflow-anchor: none; */
 
-        &:hover {
-            background-color: rgb(102 168 220);
-    padding: 8px;
-    padding-right: 1rem;
-    cursor: pointer;
-    border-radius: 15px;
-        }
-
-        .more-info {
-    content: "[ ] subtask";
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 0px;
-    max-width: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
-    margin: auto;
-    padding: 0;
-    transition: inherit;
-    resize: vertical;
-    overflow: auto;
-    /* transition: 0.3s; */
-    background-color: aliceblue;
-    li {
-                list-style-type: disc;
-    /* list-style: disc; */
-    border-bottom-style: dotted;
-    padding: 4px;
-
-                &:first-of-type {
-                    border-top-style: dotted;
-                }
-
+            &:hover {
+                background-color: rgb(102 168 220);
+        padding: 8px;
+        padding-right: 1rem;
+        cursor: pointer;
+        border-radius: 15px;
             }
-    }
-    }
-    background-color: #7ea97e;
-    border-radius: 15px;
-    z-index: 2;
-    resize: auto;
-    overflow: auto;
-    outline-style: auto;
-    /* rotate: -1deg; */
+
+            .more-info {
+        content: "[ ] subtask";
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 0px;
+        /* max-width: 100%; */
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 0;
+        transition: inherit;
+        resize: vertical;
+        overflow: auto;
+        /* transition: 0.3s; */
+        background-color: aliceblue;
+        li {
+                    list-style-type: disc;
+                    /* list-style: disc; */
+                    border-bottom-style: dotted;
+                    padding: 4px;
+
+                    &:first-of-type {
+                        border-top-style: dotted;
+                    }
+                }
+        }
+        }
+        background-color: #7ea97e;
+        border-radius: 15px;
+        z-index: 2;
+        position: relative;
+        resize: auto;
+        overflow: hidden;
+        outline-style: dashed;
+        /* rotate: -1deg; */
     }
 
     .menuPopup {
-    position: relative;
-    width: 0;
-    overflow: hidden;
-    height: fit-content;
-    margin-left: -15px;
-    padding: 2rem;
-    padding-left: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    overflow: hidden;
-    z-index: 1;
-    justify-content: space-evenly;
-    background-color: rgba(0, 0, 0, 0);
-    align-items: center;
-    transition: 0.5s;
-    /* animation: menuPopup 0.5s reverse forwards; */
-    button {
-        overflow: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2px;
+        height: fit-content;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        /* z-index: 1; */
+        /* justify-content: space-evenly; */
+        background-color: rgba(0, 0, 0, 0);
+        /* align-items: center; */
+        transition: 0.5s;
+        /* animation: menuPopup 0.5s reverse forwards; */
+        button {
+            overflow: clip;
         /* text-overflow: ellipsis; */
         width: 100%;
         border-style: none;
         height: 2rem;
-        margin-left: -1rem;
-        margin-bottom: 2px;
+        /* margin-left: -1rem; */
+        /* margin-bottom: 2px; */
+        background-color: red;
         opacity: 0.8;
         /* transition: 100ms; */
         /* transition-delay: calc(var(--order) * 1s); */
-            
+
             &:hover {
                 margin-left: 0;
         opacity: 1;
@@ -294,10 +304,10 @@ dialog {
         }
 
         ;
-    /* top: 15px; */
-    /* bottom: 0px; */
+        /* top: 15px; */
+        /* bottom: 0px; */
     }
-    
+
     rotate: 4deg;
 }
 
@@ -311,17 +321,19 @@ dialog {
     max-width: 200px;
     transition: 0.3s;
     background-color: #efe3e3;
+
     ul {
         display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: hidden;
-    height: 100%;
-    align-content: space-between;
-    /* outline-color: black; */
-    /* border-color: blue; */
-    /* justify-content: space-between; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: hidden;
+        height: 100%;
+        align-content: space-between;
+        /* outline-color: black; */
+        /* border-color: blue; */
+        /* justify-content: space-between; */
     }
+
     li {
         clip-path: content-box;
         width: inherit;
@@ -341,8 +353,8 @@ dialog {
             opacity: 1;
         }
 
-    cursor: pointer;
-    /* border-bottom-style: solid; */
+        cursor: pointer;
+        /* border-bottom-style: solid; */
     }
 
     h6 {
@@ -483,9 +495,9 @@ dialog {
     from {
         transform: translateX(150vw)
     }
+
     to {
         transform: translateX(0%)
-
     }
 }
 
@@ -493,6 +505,7 @@ dialog {
     from {
         rotate: 60deg;
     }
+
     to {
         rotate: 0deg;
     }
@@ -502,9 +515,11 @@ dialog {
     from {
         scale: 1;
     }
+
     50% {
         scale: 1.1;
     }
+
     to {
         scale: 1;
     }

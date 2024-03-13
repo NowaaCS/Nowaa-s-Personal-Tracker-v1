@@ -26,14 +26,12 @@ function editListItems() {
         edit.width = edit.offsetWidth + 20 + 'px';
         document.getElementById("background").style.backgroundColor = '#800080b3';
         makeContentUneditable();
-        console.log("removed");
     } else {
         edit.classList.add("focus"); 
         edit.innerHTML = "Editing mode";
         editButton.innerHTML = "Save";
         document.getElementById("background").style.backgroundColor = '#006aff80';
         makeContentEditable();
-        console.log("add");
     }
 }
 
@@ -58,69 +56,56 @@ function makeContentUneditable() {
 var menu = document.getElementById("menu");
 var menuList = document.getElementById("menu-list");
 var menuNavbar = document.getElementById("menu-navbar");
+var pan = document.getElementById("pan"); // The pan icon that allows moving of menus
+var menuPopup = document.getElementById("menuPopup");
+var sideMenuButton = document.getElementById("sideMenuButton");
 
-// Menu Drag
+//#region Menu Drag 
 
-var pan = document.getElementById("pan");
-pan.addEventListener("mousedown", e => {
-    var movingElement = menu;
-    var x = e.pageX;
-    var y = e.pageY;
-
-    movingElement.style.left = (x - menuList.offsetWidth + 24) + 'px';
-    movingElement.style.top = (y - menuNavbar.offsetHeight - 24) + 'px';
-
-    document.onmousemove = e => {
+    pan.addEventListener("mousedown", e => {
+        var movingElement = menu;
         var x = e.pageX;
         var y = e.pageY;
 
-        // menuPopup.style.hide = "0px";
-        movingElement.style.left = (x - menuList.offsetWidth + 32) + 'px';
-        movingElement.style.top = (y - menuNavbar.offsetHeight + 8) + 'px';
-        movingElement.style.rotate = "-5deg";
+            movingElement.style.left = (x - menuList.offsetWidth + 24) + 'px';
+            movingElement.style.top = (y - menuNavbar.offsetHeight - 24) + 'px';
 
-    };
+            document.onmousemove = e => {
+                if(movingElement) {
+                    var x = e.pageX;
+                    var y = e.pageY;
 
-    document.addEventListener("mouseup", e => {
-        movingElement.style.rotate = "2deg";
-        movingElement = null;
-    });
+                    // menuPopup.style.hide = "0px";
+                    movingElement.style.left = (x - menuList.offsetWidth + 32) + 'px';
+                    movingElement.style.top = (y - menuNavbar.offsetHeight + 8) + 'px';
+                    movingElement.style.rotate = "-5deg";
+                }
+                
+
+            };
+
+            document.addEventListener("mouseup", e => {
+                if(!movingElement) return;
+                movingElement.style.rotate = "2deg";
+                movingElement = null;
+            });
+
         
-});
+        
+    });
 
-menu.addEventListener("pointerenter", e => {
-    menu.style.rotate = "0deg";
-});
+    menu.addEventListener("pointerenter", e => {
+        menu.style.rotate = "0deg";
+    });
 
-menu.addEventListener("pointerleave", e => {
-    menu.style.rotate = "2deg";
-});
-    
+    menu.addEventListener("pointerleave", e => {
+        menu.style.rotate = "2deg";
+    });
 
+//#endregion
 
+//#region Side Menu (Not the pop-up menu from menu list) 
 
-
-
-// menu.addEventListener("dragstart", e => {
-//     console.log("dragging menu");
-//     menu.classList.add("dragging");
-//     menu.addEventListener("mousemove", e => {
-        // menu.style.top = e.clientY + 'px';
-        // menu.style.left = e.clientX + 'px';
-//     });
-// });
-
-
-
-// menu.addEventListener("dragend", e => {
-//     console.log("dragging menu end");
-//     menu.style.top = e.clientY + 'px';
-//     menu.style.left = e.clientX + 'px';
-//     menu.classList.remove("dragging");
-// });
-
-var menuPopup = document.getElementById("menuPopup");
-var sideMenuButton = document.getElementById("sideMenuButton");
     sideMenuButton.addEventListener("click", function() {
 
         var sideMenu = document.getElementById("sideMenu");
@@ -156,6 +141,14 @@ var sideMenuButton = document.getElementById("sideMenuButton");
         menuPopup.style.top = document.getElementById("menu-navbar").offsetHeight + "px";
         menuPopup.style.height = document.getElementById("menu-list").style.height;
     });
+
+//#endregion
+
+//#region Adjusting menu list position when drag icon is hidden
+
+
+
+//#endregion
 
     const menuButtons = document.querySelectorAll(".menu-button");
     
