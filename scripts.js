@@ -1,3 +1,6 @@
+// User settings
+var enableRotation = true;
+
 // Constructors
 function Task(task_name, task_weight) {
     this.name = task_name;
@@ -15,13 +18,80 @@ function add_subtask(Task, subtask) {
 // Arrays
 
 // Functions
-function editListItems() {
+
+function editSettings() {
+    console.log("CLICKED");
     var edit = document.getElementById("edit")
-    var editButton = document.getElementById("edit-button");
+    var settingsButton = document.getElementById("settings-button");
 
     if(edit.classList.contains("focus")) {
         edit.classList.remove("focus"); 
-        editButton.innerHTML = "Edit";
+        settingsButton.style.rotate = "-180deg";
+        edit.innerHTML = "Viewing mode";
+        edit.width = edit.offsetWidth + 20 + 'px';
+        document.getElementById("background").style.backgroundColor = 'hsla(300, 100%, 25%, 0.702)';
+        makeContentUneditable();
+    } else {
+        edit.classList.add("focus"); 
+        settingsButton.style.rotate = "180deg";
+        edit.innerHTML = "Adjusting settings";
+        document.getElementById("background").style.backgroundColor = 'hsl(125.42deg 100% 15.31% / 61%)';
+        makeContentEditable();
+    }
+}
+
+function toggleMotion() {
+    var disableMotionButton = document.getElementById("disable-motion-button")
+    var root = document.querySelector(":root");
+    var rs = getComputedStyle(root);
+    console.log(root.style.getPropertyValue("--transition-time"));
+
+    if(root.style.getPropertyValue("--transition-time") != "0s") {
+        root.style.setProperty("--transition-time", "0s");
+        disableMotionButton.innerHTML = "toggle_off";
+        turnOffRotation();
+        alert("Motion disabled");
+        return;
+    } 
+
+    root.style.setProperty("--transition-time", "0.3s");
+    disableMotionButton.innerHTML = "toggle_on";
+    turnOnRotation();
+    alert("Motion enabled");
+
+
+}
+var btnRotationToggle = document.getElementById("rotation-toggle-button")
+
+function toggleRotation() {
+
+    if(enableRotation == true) {
+        turnOffRotation();
+    } else {
+        turnOnRotation();
+    }
+
+}
+
+function turnOffRotation() {
+    btnRotationToggle.innerHTML = "toggle_off";
+        menu.style.rotate = "initial";
+        enableRotation = false;
+}
+
+function turnOnRotation() {
+    btnRotationToggle.innerHTML = "toggle_on";
+        enableRotation = true;
+}
+
+function editListItems() {
+    var edit = document.getElementById("edit")
+    var editButton = document.getElementById("edit-button");
+    const parentElement = editButton.parentElement;
+
+    if(edit.classList.contains("focus")) {
+        edit.classList.remove("focus"); 
+        parentElement.style.height = `${parentElement.offsetHeight - 32}px`;
         edit.innerHTML = "Viewing mode";
         edit.width = edit.offsetWidth + 20 + 'px';
         document.getElementById("background").style.backgroundColor = '#800080b3';
@@ -29,7 +99,7 @@ function editListItems() {
     } else {
         edit.classList.add("focus"); 
         edit.innerHTML = "Editing mode";
-        editButton.innerHTML = "Save";
+        parentElement.style.height = `${parentElement.offsetHeight + 32}px`;
         document.getElementById("background").style.backgroundColor = '#006aff80';
         makeContentEditable();
     }
@@ -39,6 +109,7 @@ function makeContentEditable() {
     const listItems = document.querySelectorAll(".menu-list-item")
     listItems.forEach(listItem => {
         listItem.contentEditable = "true";
+        listItem.style.cursor = "text";
         // listItem.draggable = "true";
     });
 }
@@ -47,6 +118,7 @@ function makeContentUneditable() {
     const listItems = document.querySelectorAll(".menu-list-item")
     listItems.forEach(listItem => {
         listItem.contentEditable = "false";
+        listItem.style.cursor = "arrow";
         // listItem.draggable = "false";
     });
 }
@@ -78,7 +150,10 @@ var sideMenuButton = document.getElementById("sideMenuButton");
                     // menuPopup.style.hide = "0px";
                     movingElement.style.left = (x - menuList.offsetWidth + 32) + 'px';
                     movingElement.style.top = (y - menuNavbar.offsetHeight + 8) + 'px';
-                    movingElement.style.rotate = "-5deg";
+                    if(enableRotation == true) {
+                        console.log("enabled");
+                        movingElement.style.rotate = "-2deg";
+                    }
                 }
                 
 
@@ -86,7 +161,7 @@ var sideMenuButton = document.getElementById("sideMenuButton");
 
             document.addEventListener("mouseup", e => {
                 if(!movingElement) return;
-                movingElement.style.rotate = "2deg";
+                // movingElement.style.rotate = "2deg";
                 movingElement = null;
             });
 
@@ -94,13 +169,18 @@ var sideMenuButton = document.getElementById("sideMenuButton");
         
     });
 
-    menu.addEventListener("pointerenter", e => {
-        menu.style.rotate = "0deg";
-    });
+        console.log("enabled");
+        menu.addEventListener("pointerenter", e => {
+            if(enableRotation == true) {
+                menu.style.rotate = "0deg";
+            }
+        });
 
-    menu.addEventListener("pointerleave", e => {
-        menu.style.rotate = "2deg";
-    });
+        menu.addEventListener("pointerleave", e => {
+            if(enableRotation == true) {
+                menu.style.rotate = "2deg";
+            }
+        });
 
 //#endregion
 
@@ -115,7 +195,6 @@ var sideMenuButton = document.getElementById("sideMenuButton");
             sideMenuButton.style.rotate = "180deg"
             sideMenu.style.width = "200px";
             menu.style.transform = "translateX(110%)";
-            menu.style.transform = "rotate(0.4deg)";
 
         } else {
             sideMenuButton.style.color = "white";
@@ -123,28 +202,67 @@ var sideMenuButton = document.getElementById("sideMenuButton");
             sideMenu.style.width = "0px";
             // sideMenu.style.transform = "translateX(0%)";
             menu.style.transform = "translateX(0%)";
-            menu.style.transform = "rotate(-0.4deg)";
 
         }
         
     });
 
 
-    menu.addEventListener("pointerenter", function() {
-        menuPopup.style.width = "160px";
-        menuPopup.style.top = document.getElementById("menu-navbar").offsetHeight + "px";
-        // menuPopup.style.height = document.getElementById("menu-list").style.height;
-    });
+    // menu.addEventListener("pointerenter", function() {
+    //     menuPopup.style.width = "160px";
+    //     menuPopup.style.top = document.getElementById("menu-navbar").offsetHeight + "px";
+    //     // menuPopup.style.height = document.getElementById("menu-list").style.height;
+    // });
 
-    menu.addEventListener("pointerleave", function() {
-        menuPopup.style.width = "0px";
-        menuPopup.style.top = document.getElementById("menu-navbar").offsetHeight + "px";
-        menuPopup.style.height = document.getElementById("menu-list").style.height;
-    });
+    // menu.addEventListener("pointerleave", function() {
+    //     menuPopup.style.width = "0px";
+    //     menuPopup.style.top = document.getElementById("menu-navbar").offsetHeight + "px";
+    //     menuPopup.style.height = document.getElementById("menu-list").style.height;
+    // });
 
 //#endregion
 
 //#region Adjusting menu list position when drag icon is hidden
+
+let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: [],
+};
+
+    let threshold = [];
+
+for (let i = 0; i <= 1.0; i += 0.1) {
+    threshold.push(i);
+  }
+
+options.threshold = threshold;
+
+let observer = new IntersectionObserver(callback, options);
+
+observer.observe(document.getElementById("menu"));
+
+function callback(entries, observer) {
+    entries.forEach((entry) => {
+      let visiblePct = `${Math.floor(entry.intersectionRatio * 100)}`;
+  
+      if (visiblePct < 25) {
+        // Calculate top position to keep pan icon visible
+        let navbarHeight = document.getElementById("menu-navbar").offsetHeight;
+        let iconHeight = document.getElementById("pan").offsetHeight; // Get pan icon height
+        let newTop = `calc(100% - ${navbarHeight}px - ${iconHeight}px)`; // Adjust calculation as needed
+        menu.style.top = newTop;
+      } else {
+        // Reset top position when fully visible
+        menu.style.top = null; // Remove any top style set previously
+      }
+  
+      console.log(visiblePct);
+    });
+  }
+
+
+
 
 
 

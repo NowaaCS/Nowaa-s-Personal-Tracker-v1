@@ -16,7 +16,8 @@
 */
 /* Site-wide settings  */
 :root {
-    --background-color: hsl(0, 0%, 72%);
+    --background-color: #7ea97e;
+    --transition-time: 0.3s;
     --div-color: hsl(0, 0%, 100%);
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -47,12 +48,13 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
     /* background-color: var(--div-color); */
     width: 100%;
 
     .fill {
-        align-items: center;
-        justify-content: center;
+    align-items: center;
+    justify-content: center;
     }
 }
 
@@ -64,7 +66,7 @@ dialog {
     width: 500px;
     height: 350px;
     align-items: center;
-    transition: 0.3s;
+    transition: var(--transition-time);
     justify-content: center;
     rotate: 360deg;
     animation: slide-from-right 0.7s ease-in-out forwards, rotate-in 0.7s linear;
@@ -91,7 +93,10 @@ dialog {
         cursor: grabbing;
     }
 
-    ;
+    position: absolute;
+    top: 18px; /* Adjust positioning as needed */
+    right: 18px; /* Adjust positioning as needed */
+
     width: 18px;
     height: 18px;
     text-align: center;
@@ -104,13 +109,11 @@ dialog {
     /* height: max-content; */
     background-color: transparent;
     border-radius: 15px;
-    transition: 0.3s ease-out;
+    transition: var(--transition-time) ease-out;
 
     &:hover {
-        rotate: initial;
-
         ul {
-            transition: 0.3s;
+            transition: var(--transition-time);
             /* rotate: -0.25deg; */
         }
 
@@ -125,7 +128,7 @@ dialog {
         z-index: 2;
         background-color: transparent;
         border-radius: 15px;
-        transition: 0.3s;
+        transition: var(--transition-time);
     }
 
     .menu-navbar {
@@ -145,7 +148,7 @@ dialog {
         width: 100%;
         background-color: antiquewhite;
         border-top-right-radius: 8px;
-        transition: 0.3s;
+        transition: var(--transition-time);
         border-style: none;
         border-top-left-radius: 8px;
         /* bottom: -0.3rem; */
@@ -172,7 +175,7 @@ dialog {
 
     .menu-button.active {
         opacity: 1;
-        background-color: #7ea97e;
+        background-color: var(--background-color);
         border-top-right-radius: 8px;
         height: 1.8rem;
         border-top-left-radius: 8px;
@@ -191,7 +194,6 @@ dialog {
         gap: 0.5rem;
         display: flex;
         flex-direction: column;
-
         .material-symbols-outlined {
         font-size: 12px;
         align-items: center;
@@ -209,26 +211,25 @@ dialog {
         }
 
         .menu-list-item {
-        list-style-type: none;
-        /* margin-bottom: 10px; */
-        border-bottom-style: dotted;
-        border-right-style: dashed;
-        height: fit-content;
-        padding: 4px;
-        padding-left: 8px;
-        padding-right: 16px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        border-top-right-radius: 8px;
-        transition: 0.45s;
+            list-style-type: none;
+            border-bottom-style: dotted;
+            border-right-style: dashed;
+            height: fit-content;
+            padding: 4px;
+            padding-left: 8px;
+            padding-right: 16px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+            transition: calc(var(--transition-time)*5/3);
         /* overflow-anchor: none; */
 
             &:hover {
                 background-color: rgb(102 168 220);
-        padding: 8px;
-        padding-right: 1rem;
-        cursor: pointer;
-        border-radius: 15px;
+                padding: 8px;
+                padding-right: 1rem;
+                border-radius: 15px;
+                cursor: default;
             }
 
             .more-info {
@@ -244,7 +245,7 @@ dialog {
         transition: inherit;
         resize: vertical;
         overflow: auto;
-        /* transition: 0.3s; */
+        /* transition: var(--transition-time); */
         background-color: aliceblue;
         li {
                     list-style-type: disc;
@@ -258,7 +259,7 @@ dialog {
                 }
         }
         }
-        background-color: #7ea97e;
+        background-color: var(--background-color);
         border-radius: 15px;
         z-index: 2;
         position: relative;
@@ -281,7 +282,7 @@ dialog {
         /* justify-content: space-evenly; */
         background-color: rgba(0, 0, 0, 0);
         /* align-items: center; */
-        transition: 0.5s;
+        transition: calc(var(--transition-time)*5/3);
         /* animation: menuPopup 0.5s reverse forwards; */
         button {
             overflow: clip;
@@ -308,7 +309,6 @@ dialog {
         /* bottom: 0px; */
     }
 
-    rotate: 4deg;
 }
 
 .sideMenu {
@@ -319,7 +319,7 @@ dialog {
     /* outline-offset: -5px; */
     height: 100vh;
     max-width: 200px;
-    transition: 0.3s;
+    transition: var(--transition-time);
     background-color: #efe3e3;
 
     ul {
@@ -340,7 +340,7 @@ dialog {
         padding: 0.25rem 1rem;
         color: #617cce;
         border-bottom: #617cce;
-        transition: 0.3s;
+        transition: var(--transition-time);
         opacity: 0.8;
 
         &:first-of-type {
@@ -451,7 +451,7 @@ dialog {
     border-style: none;
     cursor: pointer;
     opacity: 0.5;
-    transition: 0.3s;
+    transition: var(--transition-time);
     font-variation-settings:
         'FILL' 1,
         'wght' 400,
