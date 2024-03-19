@@ -124,7 +124,7 @@ function makeContentUneditable() {
     const listItems = document.querySelectorAll(".menu-list-item")
     listItems.forEach(listItem => {
         listItem.contentEditable = "false";
-        listItem.style.cursor = "arrow";
+        listItem.style.cursor = "default";
         // listItem.draggable = "false";
     });
 }
