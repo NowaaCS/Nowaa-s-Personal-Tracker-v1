@@ -160,7 +160,7 @@ dialog {
 
 
             &:first-of-type {
-                margin-left: 8px;
+                margin: 0px 8px;
             }
 
             text-overflow: ellipsis;

@@ -1,8 +1,8 @@
-<html lang="en">
-
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="data.js"></script>
 
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
     <title>Nowaa's Personal Tracker</title>
-</head>
+<style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				border-radius: 3px 3px 0 0;
+				z-index: 2147483647;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				#ctre_wnd { background: #000; box-shadow: 0px 0px 40px rgba(255,255,255,0.15); }
+			}
+			</style></head>
 
 <body class="vsc-initialized">
 
@@ -91,12 +102,12 @@
                 <div class="menu-contents">
 
                     <div class="menu-navbar" id="menu-navbar">
-                        <button class="menu-button" id="menu-button">This</button>
-                        <button class="menu-button" id="menu-button">Ur</button>
-                        <button class="menu-button" id="menu-button">Goal</button>
-                        <button class="menu-button" id="menu-button">List</button>
-                        <button class="menu-button" id="menu-button">Buddy</button>
-                        <button class="menu-button" onclick="addTask.showModal()" id="menu-button" style="width: 50%; margin-right: 8px">+</button>
+                        <button class="menu-button" id="menu-button"> </button>
+                        
+                        
+                        
+                        
+                        
                     </div>
 
 
@@ -207,7 +218,7 @@
 
 
 
-    <script src="scripts.js"></script>
+    <script src="/Nowaa's Personal Tracker/scripts/scripts.js"></script>
 
 
 
@@ -215,6 +226,6 @@
 
 
     </script>
-</body>
 
-</html>
+
+</body></html>
